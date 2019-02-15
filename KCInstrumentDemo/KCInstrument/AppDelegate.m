@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "KCActivityMonitor.h"
+#import "KCFluecyMonitor.h"
 
 @interface AppDelegate ()
 
@@ -19,7 +20,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
-    [[KCActivityMonitor sharedInstance] startMonitor];
+    [[KCActivityMonitor sharedInstance] startMoniting];
+    [[KCFluecyMonitor sharedInstance] startMoniting];
     
     return YES;
 }

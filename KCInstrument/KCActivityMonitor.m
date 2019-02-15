@@ -139,6 +139,7 @@ GPU_UTILI_KEY(TextureCount, textureCount)*/
     NSUInteger _count;
     NSTimeInterval _lastTime;
     int _fps;
+    BOOL _isMoniting;
 }
 
 @property (nonatomic,strong) NSTimer *timer;
@@ -168,6 +169,8 @@ GPU_UTILI_KEY(TextureCount, textureCount)*/
 {
     if (!_window) {
         
+        
+        
         _window = [[KCActivityWindow alloc] initWithFrame:CGRectMake(10, 50, 100, 65)];
         _window.layer.cornerRadius = 10;
         _window.clipsToBounds = YES;
@@ -175,28 +178,33 @@ GPU_UTILI_KEY(TextureCount, textureCount)*/
     return _window;
 }
 
-- (void)startMonitor
+- (void)startMoniting
 {
     
-//    self.timer = [NSTimer timerWithTimeInterval:1 target:self selector:@selector(timerUpdate) userInfo:nil repeats:YES];
-//
-//    [[NSRunLoop currentRunLoop] addTimer:self.timer forMode:NSRunLoopCommonModes];
+    if (_isMoniting) {
+        return;
+    }
     
     self.link = [CADisplayLink displayLinkWithTarget:self selector:@selector(displayLinkUpdate:)];
     
     [self.link addToRunLoop:[NSRunLoop currentRunLoop] forMode:NSRunLoopCommonModes];
     
     [self.window setHidden:NO];
+    _isMoniting = YES;
 }
 
-- (void)stopMonitor
+- (void)stopMoniting
 {
     
+    if (!_isMoniting) {
+        return;
+    }
 //    [self.timer invalidate];
 //    self.timer = nil;
     [self.link invalidate];
     self.link = nil;
     [self.window setHidden:YES];
+    _isMoniting = NO;
 }
 
 - (void)displayLinkUpdate:(CADisplayLink *)link

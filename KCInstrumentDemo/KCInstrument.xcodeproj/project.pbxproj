@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		072A6CF32215596C00F74123 /* KCActivityWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 072A6CEF2215596C00F74123 /* KCActivityWindow.m */; };
 		072A6CF42215596C00F74123 /* KCActivityMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 072A6CF22215596C00F74123 /* KCActivityMonitor.m */; };
+		072A6CF72216598A00F74123 /* KCFluecyMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 072A6CF62216598A00F74123 /* KCFluecyMonitor.m */; };
+		072A6CF92216A0DB00F74123 /* CrashReporter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 072A6CF82216A0DB00F74123 /* CrashReporter.framework */; };
 		07C4252321F8030A0014C8D4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 07C4252221F8030A0014C8D4 /* AppDelegate.m */; };
 		07C4252621F8030A0014C8D4 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07C4252521F8030A0014C8D4 /* ViewController.m */; };
 		07C4252921F8030A0014C8D4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 07C4252721F8030A0014C8D4 /* Main.storyboard */; };
@@ -41,6 +43,9 @@
 		072A6CF02215596C00F74123 /* KCActivityMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCActivityMonitor.h; sourceTree = "<group>"; };
 		072A6CF12215596C00F74123 /* KCActivityWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCActivityWindow.h; sourceTree = "<group>"; };
 		072A6CF22215596C00F74123 /* KCActivityMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCActivityMonitor.m; sourceTree = "<group>"; };
+		072A6CF52216598A00F74123 /* KCFluecyMonitor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KCFluecyMonitor.h; sourceTree = "<group>"; };
+		072A6CF62216598A00F74123 /* KCFluecyMonitor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KCFluecyMonitor.m; sourceTree = "<group>"; };
+		072A6CF82216A0DB00F74123 /* CrashReporter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CrashReporter.framework; sourceTree = "<group>"; };
 		07C4251E21F8030A0014C8D4 /* KCInstrument.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KCInstrument.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		07C4252121F8030A0014C8D4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		07C4252221F8030A0014C8D4 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -64,6 +69,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				072A6CF92216A0DB00F74123 /* CrashReporter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -91,6 +97,8 @@
 				072A6CF02215596C00F74123 /* KCActivityMonitor.h */,
 				072A6CF12215596C00F74123 /* KCActivityWindow.h */,
 				072A6CF22215596C00F74123 /* KCActivityMonitor.m */,
+				072A6CF52216598A00F74123 /* KCFluecyMonitor.h */,
+				072A6CF62216598A00F74123 /* KCFluecyMonitor.m */,
 			);
 			name = KCInstrument;
 			path = ../../KCInstrument;
@@ -129,6 +137,7 @@
 				07C4252C21F8030C0014C8D4 /* LaunchScreen.storyboard */,
 				07C4252F21F8030C0014C8D4 /* Info.plist */,
 				07C4253021F8030C0014C8D4 /* main.m */,
+				072A6CF82216A0DB00F74123 /* CrashReporter.framework */,
 			);
 			path = KCInstrument;
 			sourceTree = "<group>";
@@ -283,6 +292,7 @@
 			files = (
 				072A6CF32215596C00F74123 /* KCActivityWindow.m in Sources */,
 				07C4252621F8030A0014C8D4 /* ViewController.m in Sources */,
+				072A6CF72216598A00F74123 /* KCFluecyMonitor.m in Sources */,
 				07C4253121F8030C0014C8D4 /* main.m in Sources */,
 				072A6CF42215596C00F74123 /* KCActivityMonitor.m in Sources */,
 				07C4252321F8030A0014C8D4 /* AppDelegate.m in Sources */,
@@ -458,6 +468,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9W8KXJ7KY8;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/KCInstrument",
+				);
 				INFOPLIST_FILE = KCInstrument/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -475,6 +489,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9W8KXJ7KY8;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/KCInstrument",
+				);
 				INFOPLIST_FILE = KCInstrument/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
